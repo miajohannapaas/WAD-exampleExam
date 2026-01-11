@@ -1,24 +1,25 @@
 const Pool = require('pg').Pool;
+//ütleb siin kes ühendub, mis andembaas ja kus server
 const pool = new Pool({
     user: "postgres",
-    password: "postgres", // Enter your password here
-    database: "testWad", //Try to use the same name for your database
+    password: "uusparool", // Enter your password here
+    database: "WADexam", //Try to use the same name for your database
     host: "localhost",
     port: "5432"
 });
-
-const execute = async(createTblQuery, insertDataQuery) => {
+//mis tehakse kui server käivitub
+const execute = async(createTblQuery, insertDataQuery) => { 
     try {
-        await pool.connect();
-        await pool.query(createTblQuery);
-        await pool.query(insertDataQuery);
+        await pool.connect();//loob ühenduse db-ga
+        await pool.query(createTblQuery);//loob tabeli
+        await pool.query(insertDataQuery);//lisab algandmed
         return true;
     } catch (error) {
         console.error(error.stack);
         return false;
     }
 };
-
+//tabeli loomine ja algandmete lisamine
 const createTblQuery = ` 
     CREATE TABLE IF NOT EXISTS "routes" (
         "id" SERIAL PRIMARY KEY,  
@@ -51,4 +52,4 @@ execute(createTblQuery, insertDataQuery).then(result => {
     }
 });
 
-module.exports = pool;
+module.exports = pool;//lubab server.js seda ühendust kasutada

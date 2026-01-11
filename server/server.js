@@ -1,3 +1,4 @@
+//web sever, db connection and allows frontend to get through
 const express = require('express');
 const pool = require('./database');
 const cors = require('cors')
@@ -7,11 +8,11 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 
-
+//Middleware
 app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 app.use(express.json());
 
-
+//GET routes
 app.get('/api/routes', async(req, res) => {
     try {
         console.log("A get all request has arrived");
@@ -36,7 +37,7 @@ app.get('/api/routes/:id', async(req, res) => {
         console.error(err.message);
     }
 });
-
+//Post route
 app.post('/api/routes', async(req, res) => {
     try {
         console.log("A post request has arrived");
@@ -49,7 +50,7 @@ app.post('/api/routes', async(req, res) => {
         console.error(err.message);
     }
 });
-
+//Put- update
 app.put('/api/routes/:id', async(req, res) => {
     try {
         const { id } = req.params;
@@ -63,7 +64,7 @@ app.put('/api/routes/:id', async(req, res) => {
         console.error(err.message);
     }
 });
-
+//Delete
 app.delete('/api/routes/:id', async(req, res) => {
     try {
         const { id } = req.params;

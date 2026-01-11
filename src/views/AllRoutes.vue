@@ -47,14 +47,14 @@ export default {
     };
   },
   methods: {
-    fetchRouts() {
+    fetchRouts() {//getting the data, calling backend GET /api/routes
       fetch(`http://localhost:3000/api/routes/`)
         .then((response) => response.json())
         .then((data) => (this.routes = data))
         .catch((err) => console.log(err.message));
   },
   },
-  mounted() {
+  mounted() {//loading the data
     this.fetchRouts();
     console.log("mounted");
   } 

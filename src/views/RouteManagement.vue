@@ -76,7 +76,7 @@ export default {
         body: JSON.stringify(route),
         })
         .then((response) => {
-          //console.log("response.data" + response.data);
+          console.log("response.data" + response.data);
           this.$router.push("/");
         })
         .catch((e) => {
@@ -92,7 +92,7 @@ export default {
         body: JSON.stringify( {"id": id, "fromcity": route.fromcity, "tocity": route.tocity, "cost": route.cost, "departuretime": route.departuretime, "departuredate": route.departuredate}),
             })
         .then((response) => {
-          //console.log("response.data" + response.data);
+          console.log("response.data" + response.data);
           this.$router.push("/");
         })
         .catch((e) => {
@@ -105,8 +105,8 @@ export default {
         headers: { "Content-Type": "application/json" },
       })
         .then((response) => {
-          //console.log(response.data);
-          this.$router.push("/routemanagement'");
+          console.log(response.data);
+          this.$router.push("/routemanagement");
         })
         .catch((e) => {
           console.log(e);

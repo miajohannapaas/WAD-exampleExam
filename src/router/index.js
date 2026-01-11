@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import RouteManagement from "../views/RouteManagement.vue";
 import AllRouts from "../views/AllRoutes.vue";
-
+//URLs
 const routes = [
   {
         path: "/",
